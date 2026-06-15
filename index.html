@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>세계 전통의상 탐험</title>
+
+<style>
+
+body{
+    margin:0;
+    padding:20px;
+    font-family:'맑은 고딕',sans-serif;
+    background:#f5f5f5;
+}
+
+h1{
+    text-align:center;
+}
+
+.container{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.map-box{
+    position:relative;
+}
+
+.map-box img{
+    width:900px;
+    max-width:100%;
+}
+
+.country{
+    position:absolute;
+    background:rgba(255,0,0,0);
+    border:none;
+    cursor:pointer;
+}
+
+.country:hover{
+    background:rgba(0,100,255,0.2);
+}
+
+.info{
+    width:420px;
+    background:white;
+    border-radius:15px;
+    padding:20px;
+    box-shadow:0 0 10px rgba(0,0,0,0.1);
+}
+
+.info img{
+    width:100%;
+    max-width:300px;
+}
+
+#nationName{
+    text-align:center;
+}
+
+#nationDesc{
+    font-size:20px;
+    line-height:1.7;
+}
+
+</style>
+</head>
+
+<body>
+
+<h1>🌏 세계 전통의상 탐험</h1>
+
+<div class="container">
+
+<div class="map-box">
+
+<img src="worldmap.png">
+
+<!-- 캐나다 -->
+<button class="country"
+style="left:120px;top:140px;width:140px;height:80px;"
+onclick="showNation('캐나다')"></button>
+
+<!-- 미국 -->
+<button class="country"
+style="left:120px;top:240px;width:150px;height:90px;"
+onclick="showNation('미국')"></button>
+
+<!-- 멕시코 -->
+<button class="country"
+style="left:120px;top:360px;width:120px;height:70px;"
+onclick="showNation('멕시코')"></button>
+
+<!-- 브라질 -->
+<button class="country"
+style="left:280px;top:500px;width:140px;height:110px;"
+onclick="showNation('브라질')"></button>
+
+<!-- 영국 -->
+<button class="country"
+style="left:470px;top:180px;width:80px;height:60px;"
+onclick="showNation('영국')"></button>
+
+<!-- 네덜란드 -->
+<button class="country"
+style="left:540px;top:120px;width:90px;height:60px;"
+onclick="showNation('네덜란드')"></button>
+
+<!-- 독일 -->
+<button class="country"
+style="left:620px;top:170px;width:90px;height:60px;"
+onclick="showNation('독일')"></button>
+
+<!-- 그리스 -->
+<button class="country"
+style="left:520px;top:280px;width:120px;height:70px;"
+onclick="showNation('그리스')"></button>
+
+<!-- 이집트 -->
+<button class="country"
+style="left:620px;top:370px;width:120px;height:80px;"
+onclick="showNation('이집트')"></button>
+
+<!-- 케냐 -->
+<button class="country"
+style="left:700px;top:500px;width:100px;height:80px;"
+onclick="showNation('케냐')"></button>
+
+<!-- 몽골 -->
+<button class="country"
+style="left:920px;top:170px;width:130px;height:80px;"
+onclick="showNation('몽골')"></button>
+
+<!-- 인도 -->
+<button class="country"
+style="left:860px;top:330px;width:100px;height:80px;"
+onclick="showNation('인도')"></button>
+
+<!-- 인도네시아 -->
+<button class="country"
+style="left:930px;top:500px;width:160px;height:80px;"
+onclick="showNation('인도네시아')"></button>
+
+<!-- 베트남 -->
+<button class="country"
+style="left:1060px;top:320px;width:80px;height:70px;"
+onclick="showNation('베트남')"></button>
+
+<!-- 말레이시아 -->
+<button class="country"
+style="left:1090px;top:400px;width:90px;height:60px;"
+onclick="showNation('말레이시아')"></button>
+
+<!-- 일본 -->
+<button class="country"
+style="left:1210px;top:240px;width:90px;height:90px;"
+onclick="showNation('일본')"></button>
+
+<!-- 뉴질랜드 -->
+<button class="country"
+style="left:1300px;top:820px;width:120px;height:100px;"
+onclick="showNation('뉴질랜드')"></button>
+
+</div>
+
+<div class="info">
+
+<h2 id="nationName">
+나라를 클릭해 보세요!
+</h2>
+
+<img id="nationImg">
+
+<p id="nationDesc"></p>
+
+</div>
+
+</div>
+
+<script>
+
+const nations = {
+
+"일본":{
+img:"images/image01.png",
+desc:"기모노 - 소매가 넓고, 등에 허리띠를 두른다."
+},
+
+"몽골":{
+img:"images/image02.png",
+desc:"델 - 한국의 두루마기와 닮은 긴 겉옷을 입는다."
+},
+
+"인도네시아":{
+img:"images/image03.png",
+desc:"끄바야 - 블라우스와 비슷한 여자 상의, 바띡 - 전통 염색 기법으로 만든 남자 상의"
+},
+
+"베트남":{
+img:"images/image04.png",
+desc:"아오자이 - 옆이 트여 있는 긴 상의와 바지를 함께 입는다."
+},
+
+"인도":{
+img:"images/image05.png",
+desc:"쿠르타 - 무릎까지 내려오는 긴 상의, 사리 - 긴 천을 몸에 휘감는 형태의 옷"
+},
+
+"말레이시아":{
+img:"images/image06.png",
+desc:"바주꾸롱 - 무릎이나 허벅지까지 길게 내려오는 긴 소매의 상의를 입는다."
+},
+
+"네덜란드":{
+img:"images/image07.png",
+desc:"흰색 레이스 모자를 쓰고 나막신을 신는다."
+},
+
+"미국":{
+img:"images/image08.png",
+desc:"카우보이 복장 - 가죽 점퍼와 챙이 넓은 모자가 특징이다."
+},
+
+"뉴질랜드":{
+img:"images/image09.png",
+desc:"마오리족 전통의상으로 술이 달린 치마를 입는다."
+},
+
+"독일":{
+img:"images/image10.png",
+desc:"레더호젠 - 가죽으로 만든 남자 멜빵 반바지, 던들 - 폭이 풍성한 여자 치마"
+},
+
+"그리스":{
+img:"images/image11.png",
+desc:"푸스타넬라 - 흰색 주름치마에 검은 조끼를 입는다."
+},
+
+"캐나다":{
+img:"images/image12.png",
+desc:"원주민 전통의상으로 깃털 머리장식과 화려한 구슬 장식이 특징이다."
+},
+
+"이집트":{
+img:"images/image13.png",
+desc:"넓은 목걸이와 흰색 옷, 화려한 머리 장식이 특징이다."
+},
+
+"영국":{
+img:"images/image14.png",
+desc:"킬트 - 체크무늬 치마를 입고 허리에 작은 가방을 단다."
+},
+
+"브라질":{
+img:"images/image15.png",
+desc:"넓고 풍성한 흰색 치마를 입는다. 머리에 수건을 두르는 것이 특징이다."
+},
+
+"멕시코":{
+img:"images/image16.png",
+desc:"판초 - 줄무늬가 있는 망토를 입는다. 챙이 넓은 모자를 쓴다."
+},
+
+"스페인":{
+img:"images/image17.png",
+desc:"투우사의 전통 복장을 입는다. 플라멩고 드레스 - 화려한 색의 물결 치마를 입는다."
+},
+
+"케냐":{
+img:"images/image18.png",
+desc:"마사이족 전통 의상으로 붉은색 체크무늬 천을 몸에 두른다."
+}
+
+};
+
+function showNation(name){
+
+document.getElementById("nationName").innerText=name;
+
+document.getElementById("nationImg").src=nations[name].img;
+
+document.getElementById("nationDesc").innerText=nations[name].desc;
+
+}
+
+</script>
+
+</body>
+</html>
